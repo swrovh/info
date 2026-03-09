@@ -1,0 +1,360 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eris • API Services</title><!-- New Font Style --><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet"><style>
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+background:#f5f6fa;
+font-family:'Outfit',sans-serif;
+color:#222;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* ================= HERO ================= */
+.hero{
+background:linear-gradient(135deg,#7b2ff7,#2b9df4);
+border-radius:25px;
+padding:60px 30px;
+text-align:center;
+color:white;
+box-shadow:0 20px 40px rgba(0,0,0,0.15);
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.35),transparent);
+animation:shine 8s linear infinite;
+}
+
+@keyframes shine{
+0%{left:-200%}
+100%{left:200%}
+}
+
+/* ================= PROFILE ================= */
+.profile{
+width:110px;
+height:110px;
+border-radius:50%;
+border:4px solid white;
+margin:auto;
+background:#ddd;
+overflow:hidden;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+transition:transform .35s;
+}
+
+.profile:hover{
+transform:scale(1.1) rotate(3deg);
+}
+
+.profile img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.name{
+font-family:'Space Grotesk',sans-serif;
+font-size:30px;
+margin-top:14px;
+font-weight:600;
+letter-spacing:1px;
+}
+
+.hero p{
+margin-top:6px;
+opacity:0.9;
+font-size:15px;
+}
+
+/* ================= BUTTONS ================= */
+.hero-buttons{
+margin-top:25px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.btn{
+background:white;
+color:#333;
+padding:10px 22px;
+border-radius:25px;
+text-decoration:none;
+font-size:14px;
+transition:all .25s ease;
+position:relative;
+overflow:hidden;
+}
+
+/* moving white shine */
+.btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.8),transparent);
+}
+
+.btn:hover::before{
+animation:btnshine .8s;
+}
+
+@keyframes btnshine{
+0%{left:-100%}
+100%{left:120%}
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* ================= SEARCH ================= */
+.search-box{
+margin:40px 0;
+background:white;
+border-radius:30px;
+padding:15px 20px;
+display:flex;
+align-items:center;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+transition:all .35s;
+}
+
+.search-box:hover{
+transform:translateY(-5px);
+box-shadow:0 16px 35px rgba(0,0,0,0.15);
+}
+
+.search-box input{
+border:none;
+flex:1;
+outline:none;
+font-size:14px;
+font-family:'Outfit',sans-serif;
+}
+
+/* ================= TITLE ================= */
+.section-title{
+text-align:center;
+margin:40px 0 30px;
+font-size:26px;
+font-weight:600;
+color:#7b2ff7;
+font-family:'Space Grotesk',sans-serif;
+}
+
+.divider{
+width:60px;
+height:4px;
+background:#7b2ff7;
+margin:10px auto 0;
+border-radius:10px;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+0%{opacity:.4}
+50%{opacity:1}
+100%{opacity:.4}
+}
+
+/* ================= API CARDS ================= */
+.api-list{
+display:grid;
+grid-template-columns:1fr;
+gap:18px;
+}
+
+.api-card{
+background:linear-gradient(135deg,#7b2ff7,#2b9df4);
+color:white;
+padding:22px;
+border-radius:18px;
+cursor:pointer;
+transition:.3s;
+position:relative;
+overflow:hidden;
+}
+
+.api-card::after{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.35),transparent);
+}
+
+.api-card:hover::after{
+animation:shinecard 1s;
+}
+
+@keyframes shinecard{
+0%{left:-100%}
+100%{left:120%}
+}
+
+.api-card:hover{
+transform:translateY(-8px) scale(1.02);
+box-shadow:0 18px 30px rgba(0,0,0,0.3);
+}
+
+.api-title{
+font-size:18px;
+font-weight:500;
+font-family:'Space Grotesk',sans-serif;
+}
+
+.api-desc{
+font-size:13px;
+opacity:0.9;
+margin-top:6px;
+}
+
+/* ================= FLOATING WHITE CARDS ================= */
+.card{
+margin-top:40px;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,0.08);
+transition:.35s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+inset:0;
+border-radius:20px;
+padding:1px;
+background:linear-gradient(135deg,#7b2ff7,#2b9df4);
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+opacity:.35;
+}
+
+.card:hover{
+transform:translateY(-7px);
+box-shadow:0 18px 40px rgba(0,0,0,0.18);
+}
+
+/* ================= CODE ================= */
+.code{
+background:#0f172a;
+color:#00ffae;
+padding:14px;
+border-radius:10px;
+font-family:monospace;
+font-size:13px;
+overflow:auto;
+margin-top:12px;
+animation:codeGlow 3s infinite alternate;
+}
+
+@keyframes codeGlow{
+from{box-shadow:0 0 8px rgba(0,255,150,.3)}
+to{box-shadow:0 0 18px rgba(0,255,150,.8)}
+}
+
+/* ================= ACTION BUTTON ================= */
+.action-btn{
+margin-top:12px;
+display:inline-block;
+background:#7b2ff7;
+color:white;
+padding:10px 22px;
+border-radius:20px;
+text-decoration:none;
+transition:.25s;
+position:relative;
+overflow:hidden;
+}
+
+.action-btn::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,0.8),transparent);
+}
+
+.action-btn:hover::before{
+animation:btnshine .8s;
+}
+
+.action-btn:hover{
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 12px 25px rgba(0,0,0,0.2);
+}
+
+footer{
+text-align:center;
+padding:30px;
+font-size:13px;
+color:#888;
+}
+
+</style></head><body><div class="container"><!-- HERO --><div class="hero"><div class="profile">
+<img src="profile.png" alt="profile">
+</div><div class="name">Eris</div><p>Developer • API Seller • Telegram Tools</p><div class="hero-buttons">
+<a class="btn" href="https://t.me/Useridtonum_bot">Open Bot</a>
+<a class="btn" href="https://t.me/+FyJW6VGsH1M5MDBl">Telegram Channel</a>
+</div></div><!-- SEARCH --><div class="search-box">
+<input placeholder="Search web service...">
+</div><!-- API TITLE --><div class="section-title">API Services<div class="divider"></div></div><!-- API LIST --><div class="api-list"><div class="api-card">
+<div class="api-title">Vehicle Number to Mobile API</div>
+<div class="api-desc">Find registered phone numbers from vehicle data.</div>
+</div><div class="api-card">
+<div class="api-title">Username to Mobile API</div>
+<div class="api-desc">Resolve Telegram username to phone lookup system.</div>
+</div><div class="api-card">
+<div class="api-title">Vehicle Info API</div>
+<div class="api-desc">Get complete vehicle registration details.</div>
+</div><div class="api-card">
+<div class="api-title">Aadhaar Info API</div>
+<div class="api-desc">Basic Aadhaar verification endpoints.</div>
+</div></div><!-- TESTING --><div class="card">
+<h3>API Testing Example</h3>
+<div class="code">GET https://api.example.com/vehicle?number=UP32AB1234&key=YOUR_API_KEY</div>
+</div><!-- ABOUT --><div class="card">
+<h3>About Developer</h3>
+<p>My name is Eris (@iameris). I develop Telegram bots, OSINT tools and web APIs. I also build automation tools and sell APIs for developers.</p>
+</div><!-- BOT --><div class="card" style="text-align:center">
+<h3>OSINT Telegram Bot</h3>
+<p>Use the bot to lookup Telegram user information.</p>
+<a class="action-btn" href="https://t.me/Useridtonum_bot">Open Bot</a>
+</div><!-- CHANNEL --><div class="card" style="text-align:center">
+<h3>Developer Channel</h3>
+<p>Join for APIs, updates and tools.</p>
+<a class="action-btn" href="https://t.me/+FyJW6VGsH1M5MDBl">Join Channel</a>
+</div></div><footer>
+© 2026 Eris • Developer • @iameris
+</footer></body>
+</html>
